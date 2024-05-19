@@ -16,21 +16,21 @@
   <meta name="author" content="wxx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前缀和什么是前缀和前缀和是一种重要的预处理方法，能够极大降低查询的时间复杂度。它的基本思想是将一个数组的各个部分的和预先求出，保存在另一个数组中。 case具体来说，假设我们有一个数组$arr$，那么前缀和数组prefixSum将会被定义为：$prefixSum[i] &#x3D; arr[0] + arr[1] + arr[2] + … + arr[i]$。也就是说，前缀和数组的每个元素，都是原">
+    <meta name="description" content="title： 前缀和   date： 2024-05-20   tags：   - 数据结构   categories：   - 数据结构    前缀和 什么是前缀和 前缀和是一种重要的预处理方法，能够极大降低查询的时间复杂度。它的基本思想是将一个数组的各个部分的和预先求出，保存在另一个数组中。 case 具体来说，假设我们有一个数组\(a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="成长之路">
 <meta property="og:url" content="http://example.com/2024/05/18/%E5%89%8D%E7%BC%80%E5%92%8C/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前缀和什么是前缀和前缀和是一种重要的预处理方法，能够极大降低查询的时间复杂度。它的基本思想是将一个数组的各个部分的和预先求出，保存在另一个数组中。 case具体来说，假设我们有一个数组$arr$，那么前缀和数组prefixSum将会被定义为：$prefixSum[i] &#x3D; arr[0] + arr[1] + arr[2] + … + arr[i]$。也就是说，前缀和数组的每个元素，都是原">
+<meta property="og:site_name" content="成长之路">
+<meta property="og:description" content="title： 前缀和   date： 2024-05-20   tags：   - 数据结构   categories：   - 数据结构    前缀和 什么是前缀和 前缀和是一种重要的预处理方法，能够极大降低查询的时间复杂度。它的基本思想是将一个数组的各个部分的和预先求出，保存在另一个数组中。 case 具体来说，假设我们有一个数组\(a">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-18T14:57:57.508Z">
-<meta property="article:modified_time" content="2024-05-18T14:53:10.737Z">
+<meta property="article:modified_time" content="2024-05-19T11:43:29.337Z">
 <meta property="article:author" content="wxx">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hexo</title>
+  <title>成长之路</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -81,9 +81,7 @@
 
 
   
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+<meta name="generator" content="Hexo 7.2.0"></head>
 
 
 <body>
@@ -221,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          490 wörter
+          497 wörter
         
       </span>
     
@@ -274,16 +272,89 @@
             
               <div class="markdown-body">
                 
-                <h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2><h3 id="什么是前缀和"><a href="#什么是前缀和" class="headerlink" title="什么是前缀和"></a>什么是前缀和</h3><p>前缀和是一种重要的预处理方法，能够极大降低查询的时间复杂度。它的基本思想是将一个数组的各个部分的和预先求出，保存在另一个数组中。</p>
-<h4 id="case"><a href="#case" class="headerlink" title="case"></a>case</h4><p>具体来说，假设我们有一个数组$arr$，那么前缀和数组prefixSum将会被定义为：$prefixSum[i] &#x3D; arr[0] + arr[1] + arr[2] + … + arr[i]$。也就是说，前缀和数组的每个元素，都是原数组中从第0个元素加到当前位置的元素之和。<br>例如，如果原数组为$[1, 2, 3, 4, 5]$，对应的前缀和数组就是$[1, 2, 3, 4, 5]$。</p>
-<p><strong>构造前缀和数组公式</strong><br>$$<br>\begin{equation}<br>\text{prefixSum}[i] &#x3D; \sum_{j&#x3D;0}^{i} \text{arr}[j]<br>\tag{1.1}<br>\end{equation}<br>$$</p>
-<p><strong>求l到r区间和公式</strong><br>$$<br>\begin{equation}<br>\sum_{l,r} &#x3D;<br>\begin{cases}<br>\text{prefixSum}[r], &amp; \text{if } l &#x3D; 0 \ \text{and} \ r &#x3D; 0, \<br>\text{prefixSum}[r] - \text{prefixSum}[l - 1], &amp; \text{if } 0 &lt; l \leq r.<br>\end{cases}<br>\tag{1.2}<br>\end{equation}<br>$$</p>
-<h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><p>前缀和的主要作用是用于处理数组中不改变原数组的情况下区间和的问题，即快速求出数组中某个区间内的所有数之和。利用前缀和，我们可以将这个问题的时间复杂度从$O(n)$降低到$O(1)$。具体做法是：假设我们要求$[l, r]$区间的和，那么只需要一次减法运算：$prefixSum[r] - prefixSum[l - 1]$ 其中$(l &gt; 0)$就可以得到结果。如果$l &#x3D; 0$，则区间和就是$prefixSum[r]$。</p>
-<h4 id="优化思路"><a href="#优化思路" class="headerlink" title="优化思路"></a>优化思路</h4><p>不考虑边界情况,如果原数组为$[1, 2, 3, 4, 5]$，对应的前缀和数组就是$[0, 1, 2, 3, 4, 5]$。对应公式为：<br>$$<br>\begin{equation}<br>\text{prefixSum}[i] &#x3D; \sum_{j&#x3D;0}^{i} \text{arr}[j]<br>\tag{2.1}<br>\end{equation}<br>$$</p>
-<p>$$<br>\begin{equation}<br>\sum_{l, r} &#x3D; \text{prefixSum}[r + 1] - \text{prefixSum}[l], \text{ for } 0 &lt; l \leq r.<br>\tag{2.2}<br>\end{equation}<br>$$</p>
-<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/range-sum-query-immutable/description/">区域和</a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/range-sum-query-2d-immutable">二维区域和</a></p>
-<p><a target="_blank" rel="noopener" href="https://labuladong.online/algo/data-structure/prefix-sum/#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%89%8D%E7%BC%80%E5%92%8C">题解</a></p>
+                <table>
+<tbody>
+<tr class="odd">
+<td>title： 前缀和</td>
+</tr>
+<tr class="even">
+<td>date： 2024-05-20</td>
+</tr>
+<tr class="odd">
+<td>tags：</td>
+</tr>
+<tr class="even">
+<td>- 数据结构</td>
+</tr>
+<tr class="odd">
+<td>categories：</td>
+</tr>
+<tr class="even">
+<td>- 数据结构</td>
+</tr>
+</tbody>
+</table>
+<h2 id="前缀和">前缀和</h2>
+<h3 id="什么是前缀和">什么是前缀和</h3>
+<p>前缀和是一种重要的预处理方法，能够极大降低查询的时间复杂度。它的基本思想是将一个数组的各个部分的和预先求出，保存在另一个数组中。</p>
+<h4 id="case">case</h4>
+<p>具体来说，假设我们有一个数组<span
+class="math inline">\(arr\)</span>，那么前缀和数组prefixSum将会被定义为：<span
+class="math inline">\(prefixSum[i] = arr[0] + arr[1] + arr[2] + ... +
+arr[i]\)</span>。也就是说，前缀和数组的每个元素，都是原数组中从第0个元素加到当前位置的元素之和。
+例如，如果原数组为<span class="math inline">\([1, 2, 3, 4,
+5]\)</span>，对应的前缀和数组就是<span class="math inline">\([1, 2, 3,
+4, 5]\)</span>。</p>
+<p><strong>构造前缀和数组公式</strong> <span class="math display">\[
+\begin{equation}
+\text{prefixSum}[i] = \sum_{j=0}^{i} \text{arr}[j]
+\tag{1.1}
+\end{equation}
+\]</span></p>
+<p><strong>求l到r区间和公式</strong> <span class="math display">\[
+\begin{equation}
+\sum_{l,r} =
+\begin{cases}
+\text{prefixSum}[r], &amp; \text{if } l = 0 \ \text{and} \ r = 0, \\
+\text{prefixSum}[r] - \text{prefixSum}[l - 1], &amp; \text{if } 0 &lt; l
+\leq r.
+\end{cases}
+\tag{1.2}
+\end{equation}
+\]</span></p>
+<h4 id="优势">优势</h4>
+<p>前缀和的主要作用是用于处理数组中不改变原数组的情况下区间和的问题，即快速求出数组中某个区间内的所有数之和。利用前缀和，我们可以将这个问题的时间复杂度从<span
+class="math inline">\(O(n)\)</span>降低到<span
+class="math inline">\(O(1)\)</span>。具体做法是：假设我们要求<span
+class="math inline">\([l,
+r]\)</span>区间的和，那么只需要一次减法运算：<span
+class="math inline">\(prefixSum[r] - prefixSum[l - 1]\)</span> 其中<span
+class="math inline">\((l &gt; 0)\)</span>就可以得到结果。如果<span
+class="math inline">\(l = 0\)</span>，则区间和就是<span
+class="math inline">\(prefixSum[r]\)</span>。</p>
+<h4 id="优化思路">优化思路</h4>
+<p>不考虑边界情况,如果原数组为<span class="math inline">\([1, 2, 3, 4,
+5]\)</span>，对应的前缀和数组就是<span class="math inline">\([0, 1, 2,
+3, 4, 5]\)</span>。对应公式为： <span class="math display">\[
+\begin{equation}
+\text{prefixSum}[i] = \sum_{j=0}^{i} \text{arr}[j]
+\tag{2.1}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+\sum_{l, r} = \text{prefixSum}[r + 1] - \text{prefixSum}[l], \text{ for
+} 0 &lt; l \leq r.
+\tag{2.2}
+\end{equation}
+\]</span></p>
+<h3 id="实战">实战</h3>
+<p><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/range-sum-query-immutable/description/">区域和</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/range-sum-query-2d-immutable">二维区域和</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://labuladong.online/algo/data-structure/prefix-sum/#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%89%8D%E7%BC%80%E5%92%8C">题解</a></p>
 
                 
               </div>
@@ -408,6 +479,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -601,6 +678,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
