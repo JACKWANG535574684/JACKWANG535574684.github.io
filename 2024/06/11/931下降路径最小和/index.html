@@ -16,15 +16,15 @@
   <meta name="author" content="wxx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="title： 前缀和   date： 2024-05-20   tags：   - 数据结构   categories：   - 数据结构    前缀和 什么是前缀和 前缀和是一种重要的预处理方法，能够极大降低查询的时间复杂度。它的基本思想是将一个数组的各个部分的和预先求出，保存在另一个数组中。 case 具体来说，假设我们有一个数组\(a">
+    <meta name="description" content="title： 下降路径最小和931   date： 2024-05-20   tags：   - 数据结构   categories：   - 数据结构    下降路径最小和 状态转移方程定义 定义一个dp函数表示dp(matrix, i, j)表示从第0行任意一列移动到第i行第j列的最小路径和。 12345678910111213141516">
 <meta property="og:type" content="article">
 <meta property="og:title" content="成长之路">
-<meta property="og:url" content="http://example.com/2024/05/18/%E5%89%8D%E7%BC%80%E5%92%8C/index.html">
+<meta property="og:url" content="http://example.com/2024/06/11/931%E4%B8%8B%E9%99%8D%E8%B7%AF%E5%BE%84%E6%9C%80%E5%B0%8F%E5%92%8C/index.html">
 <meta property="og:site_name" content="成长之路">
-<meta property="og:description" content="title： 前缀和   date： 2024-05-20   tags：   - 数据结构   categories：   - 数据结构    前缀和 什么是前缀和 前缀和是一种重要的预处理方法，能够极大降低查询的时间复杂度。它的基本思想是将一个数组的各个部分的和预先求出，保存在另一个数组中。 case 具体来说，假设我们有一个数组\(a">
+<meta property="og:description" content="title： 下降路径最小和931   date： 2024-05-20   tags：   - 数据结构   categories：   - 数据结构    下降路径最小和 状态转移方程定义 定义一个dp函数表示dp(matrix, i, j)表示从第0行任意一列移动到第i行第j列的最小路径和。 12345678910111213141516">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-18T14:57:57.508Z">
-<meta property="article:modified_time" content="2024-06-13T15:37:34.281Z">
+<meta property="article:published_time" content="2024-06-11T14:11:56.990Z">
+<meta property="article:modified_time" content="2024-06-13T15:37:31.763Z">
 <meta property="article:author" content="wxx">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-18 22:57" pubdate>
-          2024年5月18日 晚上
+        <time datetime="2024-06-11 22:11" pubdate>
+          2024年6月11日 晚上
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          497 wörter
+          436 wörter
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          5 minuten
+          4 minuten
         
       </span>
     
@@ -275,7 +275,7 @@
                 <table>
 <tbody>
 <tr class="odd">
-<td>title： 前缀和</td>
+<td>title： 下降路径最小和931</td>
 </tr>
 <tr class="even">
 <td>date： 2024-05-20</td>
@@ -294,67 +294,12 @@
 </tr>
 </tbody>
 </table>
-<h2 id="前缀和">前缀和</h2>
-<h3 id="什么是前缀和">什么是前缀和</h3>
-<p>前缀和是一种重要的预处理方法，能够极大降低查询的时间复杂度。它的基本思想是将一个数组的各个部分的和预先求出，保存在另一个数组中。</p>
-<h4 id="case">case</h4>
-<p>具体来说，假设我们有一个数组<span
-class="math inline">\(arr\)</span>，那么前缀和数组prefixSum将会被定义为：<span
-class="math inline">\(prefixSum[i] = arr[0] + arr[1] + arr[2] + ... +
-arr[i]\)</span>。也就是说，前缀和数组的每个元素，都是原数组中从第0个元素加到当前位置的元素之和。
-例如，如果原数组为<span class="math inline">\([1, 2, 3, 4,
-5]\)</span>，对应的前缀和数组就是<span class="math inline">\([1, 3, 6,
-10, 15]\)</span>。</p>
-<p><strong>构造前缀和数组公式</strong> <span class="math display">\[
-\begin{equation}
-\text{prefixSum}[i] = \sum_{j=0}^{i} \text{arr}[j]
-\tag{1.1}
-\end{equation}
-\]</span></p>
-<p><strong>求l到r区间和公式</strong> <span class="math display">\[
-\begin{equation}
-\sum_{l,r} =
-\begin{cases}
-\text{prefixSum}[r], &amp; \text{if } l = 0 \ \text{and} \ r = 0, \\
-\text{prefixSum}[r] - \text{prefixSum}[l - 1], &amp; \text{if } 0 &lt; l
-\leq r.
-\end{cases}
-\tag{1.2}
-\end{equation}
-\]</span></p>
-<h4 id="优势">优势</h4>
-<p>前缀和的主要作用是用于处理数组中不改变原数组的情况下区间和的问题，即快速求出数组中某个区间内的所有数之和。利用前缀和，我们可以将这个问题的时间复杂度从<span
-class="math inline">\(O(n)\)</span>降低到<span
-class="math inline">\(O(1)\)</span>。具体做法是：假设我们要求<span
-class="math inline">\([l,
-r]\)</span>区间的和，那么只需要一次减法运算：<span
-class="math inline">\(prefixSum[r] - prefixSum[l - 1]\)</span> 其中<span
-class="math inline">\((l &gt; 0)\)</span>就可以得到结果。如果<span
-class="math inline">\(l = 0\)</span>，则区间和就是<span
-class="math inline">\(prefixSum[r]\)</span>。</p>
-<h4 id="优化思路">优化思路</h4>
-<p>不考虑边界情况,如果原数组为<span class="math inline">\([1, 2, 3, 4,
-5]\)</span>，对应的前缀和数组就是<span class="math inline">\([0, 1, 3,
-6, 10, 15]\)</span>。对应公式为： <span class="math display">\[
-\begin{equation}
-\text{prefixSum}[i] = \sum_{j=0}^{i} \text{arr}[j]
-\tag{2.1}
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-\sum_{l, r} = \text{prefixSum}[r + 1] - \text{prefixSum}[l], \text{ for
-} 0 &lt; l \leq r.
-\tag{2.2}
-\end{equation}
-\]</span></p>
-<h3 id="实战">实战</h3>
 <p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/range-sum-query-immutable/description/">区域和</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/range-sum-query-2d-immutable">二维区域和</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://labuladong.online/algo/data-structure/prefix-sum/#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%89%8D%E7%BC%80%E5%92%8C">题解</a></p>
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-falling-path-sum/description/">下降路径最小和</a></p>
+<p><strong>状态转移方程定义</strong> 定义一个dp函数表示dp(matrix, i,
+j)表示从第0行任意一列移动到第i行第j列的最小路径和。 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">minFallingPathSum</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] matrix)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> Integer.MAX_VALUE;<br>        <span class="hljs-comment">// 可以从第一行的任意一列出发</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; matrix[<span class="hljs-number">0</span>].length; i++) &#123;<br>            min = Math.min(min, dp(matrix, matrix.length - <span class="hljs-number">1</span>, i));<br>        &#125;<br>        <span class="hljs-keyword">return</span> min;<br>    &#125;<br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">dp</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] matrix, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j)</span> &#123;<br>        <span class="hljs-comment">// 上一个节点的位置放置数组越界，给出一个大于可能值的值，让他在getMin的时候被过滤掉</span><br>        <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">0</span> || j &lt; <span class="hljs-number">0</span> || i &gt;= matrix.length || j &gt;= matrix[<span class="hljs-number">0</span>].length ) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">99999</span>;<br>        &#125;<br>        <span class="hljs-comment">// base case</span><br>        <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> matrix[i][j];<br>        &#125;<br><br>        <span class="hljs-comment">// 灵魂所在，第0行任意一列移动到第i行第j列的最小路径和等于第i-1行中能到达第i行j列的最小值加上matrix[i][j]</span><br>        <span class="hljs-keyword">return</span> getMin(dp(matrix, i - <span class="hljs-number">1</span>, j), dp(matrix, i - <span class="hljs-number">1</span>, j + <span class="hljs-number">1</span>), dp(matrix, i - <span class="hljs-number">1</span>, j - <span class="hljs-number">1</span>)) + matrix[i][j];<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getMin</span><span class="hljs-params">(<span class="hljs-type">int</span> left, <span class="hljs-type">int</span> down, <span class="hljs-type">int</span> right)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> Math.min(left, down);<br>        <span class="hljs-keyword">return</span> Math.min(min, right);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+上面的代码，因为存在过多的重复计算，可以使用备忘录来进行剪枝</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-type">int</span> memo[][];<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">minFallingPathSum</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] matrix)</span> &#123;<br>        memo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[matrix.length][matrix[<span class="hljs-number">0</span>].length];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; matrix.length; i++) &#123;<br>            Arrays.fill(memo[i], <span class="hljs-number">666666</span>);<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> Integer.MAX_VALUE;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; matrix[<span class="hljs-number">0</span>].length; i++) &#123;<br>            min = Math.min(min, dp(matrix, matrix.length - <span class="hljs-number">1</span>, i));<br>        &#125;<br>        <span class="hljs-keyword">return</span> min;<br>    &#125;<br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">dp</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] matrix, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j)</span> &#123;<br>        <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">0</span> || j &lt; <span class="hljs-number">0</span> || i &gt;= matrix.length || j &gt;= matrix[<span class="hljs-number">0</span>].length ) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">99999</span>;<br>        &#125;<br><br>         <span class="hljs-keyword">if</span> (memo[i][j] != <span class="hljs-number">666666</span>) &#123;<br>            <span class="hljs-keyword">return</span> memo[i][j];<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> matrix[i][j];<br>        &#125;<br><br>        memo[i][j] = getMin(dp(matrix, i - <span class="hljs-number">1</span>, j), dp(matrix, i - <span class="hljs-number">1</span>, j + <span class="hljs-number">1</span>), dp(matrix, i - <span class="hljs-number">1</span>, j - <span class="hljs-number">1</span>)) + matrix[i][j];<br>        <span class="hljs-keyword">return</span> memo[i][j];<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getMin</span><span class="hljs-params">(<span class="hljs-type">int</span> left, <span class="hljs-type">int</span> down, <span class="hljs-type">int</span> right)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> Math.min(left, down);<br>        <span class="hljs-keyword">return</span> Math.min(min, right);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -373,7 +318,7 @@ target="_blank" rel="noopener" href="https://labuladong.online/algo/data-structu
   <div class="license-box my-3">
     <div class="license-title">
       <div></div>
-      <div>http://example.com/2024/05/18/前缀和/</div>
+      <div>http://example.com/2024/06/11/931下降路径最小和/</div>
     </div>
     <div class="license-meta">
       
@@ -385,7 +330,7 @@ target="_blank" rel="noopener" href="https://labuladong.online/algo/data-structu
       
         <div class="license-meta-item license-meta-date">
           <div>Veröffentlicht am</div>
-          <div>2024年5月18日</div>
+          <div>2024年6月11日</div>
         </div>
       
       
@@ -417,9 +362,9 @@ target="_blank" rel="noopener" href="https://labuladong.online/algo/data-structu
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/11/931%E4%B8%8B%E9%99%8D%E8%B7%AF%E5%BE%84%E6%9C%80%E5%B0%8F%E5%92%8C/" title="">
+                      <a href="/2024/06/12/%E5%85%A8%E6%8E%92%E5%88%9746/" title="全排列46">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">全排列46</span>
                         <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
@@ -427,7 +372,7 @@ target="_blank" rel="noopener" href="https://labuladong.online/algo/data-structu
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/18/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" title="">
+                      <a href="/2024/05/18/%E5%89%8D%E7%BC%80%E5%92%8C/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
